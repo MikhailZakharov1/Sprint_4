@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
+
 
 //Класс главной страницы сайта Самокат
 public class HomePage {
@@ -14,7 +16,7 @@ public class HomePage {
     //локатор верхней кнопки для заказа "Заказать"
     private By higherOrderButton = By.xpath(".//button[(@class ='Button_Button__ra12g' and text()='Заказать')]");
     //локатор нижней кнопки для заказа "Заказать"
-    private By lowerOrderButton = By.className("Button_Middle__1CSJM");
+    private By lowerOrderButton = By.xpath(".//div[@class ='Home_FinishButton__1_cWm']//button");
     //локаторы для кнопок вопросов из раздела "Вопросы о важном"
     private By buttonImportantQuestLi_0 = By.id("accordion__heading-0");
     private By buttonImportantQuestLi_1 = By.id("accordion__heading-1");
@@ -63,7 +65,7 @@ public class HomePage {
         By locator = buttonsImpotantQuestionsArray[listIndex];
         WebElement element = driver.findElement(locator);
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
-        new WebDriverWait(driver, 5)
+        new WebDriverWait(driver, Duration.ofSeconds(3))
                 .until(ExpectedConditions.visibilityOfElementLocated(locator));
         driver.findElement(locator).click();
     }
@@ -105,7 +107,7 @@ public class HomePage {
     public boolean contentIsDisplayed(int listIndex) {
         By locator = AnswearsImportQuestArray[listIndex];
         String expectedAnswersText = expectedAnswersImportantQuestions[listIndex];
-        new WebDriverWait(driver, 5)
+        new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.visibilityOfElementLocated(locator));
         return driver.findElement(locator).isDisplayed() && getAnswersImportantQuestions(listIndex).equals(expectedAnswersText);
     }

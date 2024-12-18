@@ -8,7 +8,7 @@ import ru.yandex.praktikum.*;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(Parameterized.class)
-public class OrderStatusTest extends ConnectionChrome{
+public class OrderStatusTest extends Connection{
 
     private final String buttonLocation;
     private final String name;

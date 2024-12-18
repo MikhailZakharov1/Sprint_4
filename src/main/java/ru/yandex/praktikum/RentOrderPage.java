@@ -6,6 +6,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
+
 //класс страницы Про аренду
 public class RentOrderPage {
     private WebDriver driver;
@@ -108,7 +110,7 @@ public class RentOrderPage {
         choosePeriod(days);
         chooseColor(newColor);
         enterComment(newComment);
-        new WebDriverWait(driver, 3);
+        new WebDriverWait(driver, Duration.ofSeconds(3));
         clickOrderButton();
         return this;
     }
